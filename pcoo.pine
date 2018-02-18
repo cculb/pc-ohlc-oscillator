@@ -1,0 +1,31 @@
+//@version=3
+study("PC OHLC Oscillator", shorttitle="PCOO")
+o = (open-open[7])/open[7]
+h = (high-high[7])/high[7]
+l = (low-low[7])/low[7]
+c = (close-close[7])/close[7]
+plotcandle(o, h, l, c, color=c>=(h+l)/2 ? yellow : red)
+fill(hline(-.00), hline(.00), color=black, transp=55)
+
+o1 = (open-open[4])/open[4]
+h1 = (high-high[4])/high[4]
+l1 = (low-low[4])/low[4]
+c1 = (close-close[4])/close[4]
+plotcandle(o1, h1, l1, c1, color=c1>=(h1+l1)/2 ? lime : red)
+
+o11 = (open-open[2])/open[2]
+h11 = (high-high[2])/high[2]
+l11 = (low-low[2])/low[2]
+c11 = (close-close[2])/close[2]
+plotcandle(o11, h11, l11, c11, color=c11>=(h11+l11)/2 ? blue : red)
+
+o111 = (open-open[12])/open[12]
+h111 = (high-high[12])/high[12]
+l111 = (low-low[12])/low[12]
+c111 = (close-close[12])/close[12]
+
+plotcandle(o111, h111, l111, c111, color=c111>=(h111+l111)/2 ? aqua : red)
+plot(sum(c, 3), style=columns, transp=90)
+plot(sum(c1, 3), style=columns, color=lime, transp=90)
+plot(sum(c11, 3), color=aqua, style=columns, transp=90)
+plot(sum(c111, 3), color=blue, style=columns, transp=90)
